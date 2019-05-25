@@ -18,7 +18,7 @@
 	}
 </style>
 </head>
-<body onload="setStartAndEnd()">
+<body>
 
 	<div class="bg-contact100" style="background-image: url('images/bg-01.jpg');">
 		<div class="container-contact100">
@@ -76,7 +76,7 @@
 		//var json3 = {qty:qty,fid:fid,cid:cid,sid:sid,total:total,oid:oid};
 
 																                	$.ajax({
-																		                url: 'http://localhost:8080/orders/order'+oid,
+																		                url: 'http://localhost:8080/orders/order/'+oid,
 																		                type: 'DELETE',
 																		                //contentType:'application/json',
 																		                //data: JSON.stringify(json3),
