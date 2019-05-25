@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>National Railway Booking</title>
+	
+	<link rel="icon" type="image/png" href="images/icon.png"/>
+
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+<style type="text/css">
+	.a{
+		font-weight: 900;
+		color: #fff;
+		font-size: 26px;
+	}
+</style>
+</head>
+<body onload="setStartAndEnd()">
+
+	<div class="bg-contact100" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-contact100">
+			<div class="container">
+				<div align="center">
+					<img src="images/icon.png" width="10%" >
+					<h1 style="text-decoration: solid;font-size: -webkit-xxx-large;">Food Buy & sell Menu</h1>
+				</div>
+				<br>
+				    <br>
+				
+				    <div align="center">
+				    	<a href="add.html" class="btn btn-success"  style="width: 100%"> Add Order</a>
+				    	
+				    </div>
+
+				    <br>
+				    <br>
+				    <div align="center">
+				    	<a href="edit.html" class="btn btn-warning"  style="width: 100%"> Edit Order</a>
+				    	
+				    </div>
+
+				    <br>
+				    <br>
+				    <div align="center">
+				    	<a href="del.html" class="btn btn-danger"  style="width: 100%"> Delete Order</a>
+				    	
+				    </div>
+
+				    <br>
+				    <br>
+
+				    
+			</div>
+		</div>
+	</div>
+
+
+
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="js/bootbox/bootbox.all.min.js"></script>
+
+
+<script type="text/javascript">
+	function submit2() {
+		let oid=document.getElementById('oid').value;
+		let qty=document.getElementById('qty').value;
+		let fid=document.getElementById('fid').value;
+		let cid=document.getElementById('cid').value;
+		let sid=document.getElementById('sid').value;
+		let total=document.getElementById('total').value;
+
+		if(oid==null||oid==''){
+			alert('enter oid');
+			return false;
+		}
+		else if(qty==null||qty==''){
+			alert('enter qty');
+			return false;
+		}
+		else if(fid==null||fid==''){
+			alert('enter fid');
+			return false;
+		}
+		else if(cid==null||cid==''){
+			alert('enter cid');
+			return false;
+		}
+		else if(sid==null||sid==''){
+			alert('enter sid');
+			return false;
+		}
+		else if(total==null||total==''||!isNaN(total)){
+			alert('enter total nuber');
+			return false;
+		}
+
+		var json3 = {qty:qty,fid:fid,cid:cid,sid:sid,total:total,oid:oid};
+
+																                	$.ajax({
+																		                url: 'http://localhost:8080/orders/order',
+																		                type: 'POST',
+																		                contentType:'application/json',
+																		                data: JSON.stringify(json3),
+																		                dataType: 'json',
+																		                success: function(response)
+																		                {	
+																		                	
+																		                	console.log(response);
+																		                	alert('add ok')
+
+																		                	
+
+																		                	
+																		                },
+																		                error: function(response) {
+																							console.log(response); 
+																						}
+																							
+																							
+																		         	});		
+
+
+
+	}
+</script>
+
+</body>
+</html>
